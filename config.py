@@ -1,0 +1,3 @@
+
+WTF_CSRF_ENABLED = True
+SECRET_KEY = 'sdhbgc33rndfd22343d445cb78bve4345vb5445'

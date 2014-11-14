@@ -1,0 +1,24 @@
+elements(buttons).
+elements(keys).
+elements(screen).
+elements(lcd).
+elements(buttons).
+elements(sim).
+elements(gsm).
+elements(printer).
+elements(connection).
+elements(printer).
+elements(battery).
+problem(battery,hot).
+problem(battery,empty).
+problem(connection,error).
+problem(connection,no).
+problem(connection,poor).
+
+solution(poor,'Ensure you have a sim card inside the device').
+solution(poor,'Ensure the sim card inside the device has internet bundles').
+solution(poor,'Use another sim card').
+solution(X,Y):-\+ solution(X,_),solution(poor,Y).
+solution(hot,'Disconnect the machine from the power supply').
+solution(empty,'Connect the machine to the power supply').
+solution(flat,'Connect the machine to the power supply').

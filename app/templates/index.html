@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="span12">
+    {% if form_errors and form_errors.__contains__('quiz') %}
+    <div class="alert alert-danger">
+        {{form_errors['quiz']}}
+    </div>
+    {% endif %}
+    {% if error %}
+    <div class="alert alert-danger">
+        {{error}}
+    </div>
+    {% endif %}
+    <div class="alert alert-success">
+        <p>If you are here you must be having a Timpa POS device and you are experiencing some problem with it!</p>
+        <p>I am your perfect guide to solving your problem, type your question in the form below.</p>
+    </div>
+
+
+    <h3>Type your problem/question below</h3>
+    <form class="horizontal-form" action="" method="post">
+        {{ form.hidden_tag() }}
+        <div class="control-group">
+            <div class="controls">
+                {{form.quiz(class='span12')}}
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-success">Ask me!!!</button>
+            </div>
+        </div>
+    </form>
+    <h3>Your solution will be displayed below</h3>
+    <div class="accordion" id="accordion2">
+        {% if sol %}
+        {% for u in sol %}
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{loop.index}}">
+                    Solution {{loop.index}}
+                </a>
+            </div>
+            <div id="collapse{{loop.index}}" class="accordion-body collapse {% if loop.index < 2 %}in{% endif %}">
+                <div class="accordion-inner">
+                    {{u}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
